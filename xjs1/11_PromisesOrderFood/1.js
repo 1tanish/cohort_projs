@@ -7,59 +7,53 @@ let status = "";
 h2.textContent = status;
 document.querySelector('#main').appendChild(h2);
 const food = "burger";
+time= 700;
 
-
-h1.addEventListener("click", () => {
-  h1.style.backgroundColor = "transparent";
-  h2.style.display = "none";
+h1.addEventListener( 'click',() => {
+  h1.style.display = "none";
+  
+  chances1 = Math.floor(Math.random()*1.2)? false : true; 
+  chances2 = Math.floor(Math.random()*1.3)? false : true; 
+  console.log(chances1, chances2);
 
   orderFood = (food) => {
     return new Promise((res, rej) => {
-      h1.innerHTML = `ordering ${food}...`;
+      h2.innerHTML = `ordering ${food}...`;
       setTimeout(() => {
-        res();
-      }, 2000);
+        chances1==true?res():rej();
+      }, time);
     });
   };
   orderDel = (food) => {
     return new Promise((res, rej) => {
-      h1.innerHTML = `delivering ${food}....`;
+      h2.innerHTML = `delivering ${food}....`;
       setTimeout(() => {
-        rej();
-      }, 2000);
+        chances2==true?res():rej();
+      }, time);
     });
   };
 
   orderFood(food)
     .then(() => {
-      h1.innerHTML = `${food} ordered`;
+      h2.innerHTML = `${food} ordered`;
       orderDel(food)
         .then(() => {
-          h1.innerHTML = `${food} delivered`;
-          status='delivered';
-          h2.textContent = status;
+          h2.innerHTML = `${food} delivered`;
           setTimeout(() => {
-            h1.innerHTML = "order again";
-            h1.style.backgroundColor = "white";
-            h2.style.display = "block";
-          }, 1000);
+            h1.style.display = "block";
+          }, time+1000);
         })
         .catch(() => {
-          h1.innerHTML = "sorry we are not able to deliver rn";
-          status='order not delivered';
-          h2.textContent = status;
+          h2.innerHTML = "sorry we are not able to deliver rn";
           setTimeout(() => {
-            h1.innerHTML = "order again";
-            h1.style.backgroundColor = "white";
-            h2.style.display = "block"; 
-          }, 3000);
+           h1.style.display = "block";
+          }, time+1000);
         });
     })
     .catch(() => {
-      h1.innerHTML = `error in delivering ${food}`;
+      h2.innerHTML = `${food} order failed`;
       setTimeout(() => {
-        h1.innerHTML = "order again";
-        h1.style.backgroundColor = "white";
-      }, 3000);
+        h1.style.display = "block";
+      }, time+1000);
     });
 });
