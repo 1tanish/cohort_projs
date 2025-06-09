@@ -15,7 +15,7 @@
         <input
           type="text"
           placeholder="Enter your name"
-          class="name p-2 focus:outline-none text-center font-mono border-l-[1px] border-white"
+          class="nameinp p-2 focus:outline-none text-center font-mono border-l-[1px] border-white"
         />
         <input
         value="Search"
@@ -32,18 +32,19 @@
         <section
           class="font-mono flex flex-col justify-center rounded-xl p-4 gap-5 hidden"
         >
-          <div class="flex gap-5">
+          <div class="flex gap-5 items-center">
             <img
-              class="usrimg h-20 w-20 rounded-lg flex"
+              class="usrimg w-30 h-30 rounded-lg flex"
             />
             <div class="idbio flex flex-col justify-evenly gap-5">
-              <h1 class="data usrname min-w-45">ID</h1>
-              <h4 class="data bio text-[13px] min-w-20">'Bio'</h4>
+              <h1 class="data usrname min-w-45">Name</h1>
+              <h1 class="data usrID min-w-45">ID</h1>
+              <h4 class="data bio text-[13px] min-w-20">Bio</h4>
             </div>
           </div>
           <div class="fetching animate-pulse text-[12px] text-center hidden">fetching..</div>
           <div
-            class="flex justify-between gap-10 items-center justify-center text-[13px]"
+            class="flex justify-between gap-10 items-center text-[13px]"
           >
             <h4 class="data location capitalize min-w-20 ">location</h4>
             <h4 class="data followers min-w-20 ">followers</h4>

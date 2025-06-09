@@ -1,13 +1,30 @@
 const form = document.querySelector("form");
 let datanodes = document.querySelectorAll(".data");
 let idbio = document.querySelector(".idbio");
-let fetching = document.querySelector('.fetching')
+let fetching = document.querySelector(".fetching");
+
 function getUserInfo(username) {
   return fetch(`https://api.github.com/users/${username}`).then((res) => {
     if (!res.ok) throw new Error("User not found lol ;)");
     return res.json();
   });
 }
+
+
+function getRepos(username) {
+  return fetch(
+    `https://api.github.com/users/${username}/repos?sort=updated`
+  ).then((raw) => {
+    if (!raw.ok) {
+      console.log("user not found");
+      throw new Error("user not found");
+    }
+    return raw.json();
+  });
+}
+
+
+
 
 
 form.addEventListener("submit", function (event) {
@@ -21,22 +38,23 @@ form.addEventListener("submit", function (event) {
 
   let section = document.querySelector("section");
   section.classList.remove("hidden");
-  
+  let username= document.querySelector('.usrname')
+  username.classList.remove('hidden')
   let bio = document.querySelector(".bio");
   let followers = document.querySelector(".followers");
   let following = document.querySelector(".following");
   let location = document.querySelector(".location");
   location.innerText = "location";
-  following.innerText ='following';
-  followers.innerText ='followers';
+  following.innerText = "following";
+  followers.innerText = "followers";
 
-  const username = document.querySelector(".usrname");
-  const input = document.querySelector(".name");
+  const userID = document.querySelector(".usrID");
+  const input = document.querySelector(".nameinp");
   const nameinput = input.value.trim();
   const nametop = document.querySelector(".nametop");
   if (!nameinput) {
     section.classList.add("hidden");
-    nametop.innerText=''
+    nametop.innerText = "";
     alert("Please enter a username");
     return;
   }
@@ -50,19 +68,20 @@ form.addEventListener("submit", function (event) {
   });
   idbio.classList.add("hidden");
 
-  fetching.classList.remove('hidden')
+  fetching.classList.remove("hidden");
 
   getUserInfo(nameinput)
     .then((data) => {
       section.classList.remove("text-transparent");
       setTimeout(() => {
-        fetching.classList.add('hidden')
+        fetching.classList.add("hidden");
         datanodes.forEach((elem) => {
           elem.classList.remove("hidden");
         });
         idbio.classList.remove("hidden", "text-transparent");
 
-        username.innerText = `Id: ${data.id}`;
+        data.name?username.innerText=`Name: ${data.name}`: username.classList.add('hidden');
+        userID.innerText = `Id: ${data.id}`;
         if (data.bio != null) {
           bio.innerText = data.bio;
         } else {
@@ -83,7 +102,7 @@ form.addEventListener("submit", function (event) {
     .catch((error) => {
       bio.classList.add("hidden");
       section.classList.add("text-center");
-      username.innerText = `${error.message}`;
+      userID.innerText = `${error.message}`;
       img.classList.add("hidden");
       followers.innerText = `-`;
       following.innerText = `-`;
