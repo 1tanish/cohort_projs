@@ -7,35 +7,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <div
-      id="main"
-      class="p-10 h-[100vh] w-[100vw] bg-black text-[grey] bg-cover flex flex-col justify-center items-center flex-wrap"
-    >
+    <div id="main" class="p-10 h-[100vh] w-[100vw] bg-black text-[grey] bg-cover flex flex-col justify-center items-center flex-wrap">
       <form>
-        <input
-          type="text"
-          placeholder="Enter your name"
-          class="nameinp p-2 focus:outline-none text-center font-mono border-l-[1px] border-white"
-        />
-        <input
-        value="Search"
-          type="submit"
-          class="h-10 p-2 bg-white text-black font-mono cursor-pointer hover:bg-gray-200 transition-colors"
-        />
+        <input type="text" placeholder="Enter your name" class="nameinp p-2 focus:outline-none text-center font-mono border-l-[1px] border-white" />
+        <input value="Search" type="submit" class="h-10 p-2 bg-white text-black font-mono cursor-pointer hover:bg-gray-200 transition-colors" />
       </form>
       <div class="info flex flex-col justify-center">
-        <h1
-          class="nametop text-white font-mono text-[16px] hidden mt-20 text-center"
-        >
-          name
-        </h1>
-        <section
-          class="font-mono flex flex-col justify-center rounded-xl p-4 gap-5 hidden"
-        >
+        <h1 class="nametop text-white font-mono text-[16px] hidden mt-20 text-center">name</h1>
+        <section class="font-mono flex flex-col justify-center rounded-xl p-4 gap-5 hidden">
           <div class="flex gap-5 items-center">
-            <img
-              class="usrimg w-30 h-30 rounded-lg flex"
-            />
+            <img class="usrimg w-30 h-30 rounded-lg flex" />
             <div class="idbio flex flex-col justify-evenly gap-5">
               <h1 class="data usrname min-w-45">Name</h1>
               <h1 class="data usrID min-w-45">ID</h1>
@@ -43,11 +24,9 @@
             </div>
           </div>
           <div class="fetching animate-pulse text-[12px] text-center hidden">fetching..</div>
-          <div
-            class="flex justify-between gap-10 items-center text-[13px]"
-          >
-            <h4 class="data location capitalize min-w-20 ">location</h4>
-            <h4 class="data followers min-w-20 ">followers</h4>
+          <div class="flex justify-between gap-10 items-center text-[13px]">
+            <h4 class="data location capitalize min-w-20">location</h4>
+            <h4 class="data followers min-w-20">followers</h4>
             <h4 class="data following min-w-20">following</h4>
           </div>
         </section>

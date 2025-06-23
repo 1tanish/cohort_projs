@@ -10,11 +10,8 @@ function getUserInfo(username) {
   });
 }
 
-
 function getRepos(username) {
-  return fetch(
-    `https://api.github.com/users/${username}/repos?sort=updated`
-  ).then((raw) => {
+  return fetch(`https://api.github.com/users/${username}/repos?sort=updated`).then((raw) => {
     if (!raw.ok) {
       console.log("user not found");
       throw new Error("user not found");
@@ -23,23 +20,16 @@ function getRepos(username) {
   });
 }
 
-
-
-
-
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   let img = document.querySelector("img");
-  img.setAttribute(
-    "src",
-    "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
-  );
+  img.setAttribute("src", "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png");
 
   let section = document.querySelector("section");
   section.classList.remove("hidden");
-  let username= document.querySelector('.usrname')
-  username.classList.remove('hidden')
+  let username = document.querySelector(".usrname");
+  username.classList.remove("hidden");
   let bio = document.querySelector(".bio");
   let followers = document.querySelector(".followers");
   let following = document.querySelector(".following");
@@ -80,7 +70,7 @@ form.addEventListener("submit", function (event) {
         });
         idbio.classList.remove("hidden", "text-transparent");
 
-        data.name?username.innerText=`Name: ${data.name}`: username.classList.add('hidden');
+        data.name ? (username.innerText = `Name: ${data.name}`) : username.classList.add("hidden");
         userID.innerText = `Id: ${data.id}`;
         if (data.bio != null) {
           bio.innerText = data.bio;
@@ -91,9 +81,7 @@ form.addEventListener("submit", function (event) {
         img.src = data.avatar_url;
         followers.innerText = `Follwers: ${data.followers}`;
         following.innerText = `Following: ${data.following}`;
-        location.innerText = data.location
-          ? `📍 ${data.location}`
-          : "location❌";
+        location.innerText = data.location ? `📍 ${data.location}` : "location❌";
       }, 2000);
       datanodes.forEach((elem) => {
         elem.classList.remove("animate-pulse");

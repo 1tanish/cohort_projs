@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "Gs";
+  src: url("GeneralSans-Regular.otf");
+}
+@font-face {
+  font-family: "Gslight";
+  src: url("GeneralSans-Light.otf");
+}
+@font-face {
+  font-family: "Gsbold";
+  src: url("GeneralSans-Bold.otf");
+}
+@font-face {
+  font-family: "Gssemib";
+  src: url("GeneralSans-Semibold.otf");
+}
+@font-face {
+  font-family: "Gsmedium";
+  src: url("GeneralSans-Medium.otf");
+}
+@font-face {
+  font-family: "jmono";
+  src: url("JetBrainsMono-Regular.ttf");
+}
+@font-face {
+  font-family: "jmonosb";
+  src: url("JetBrainsMono-SemiBold.ttf");
+}@font-face {
+  font-family: "jmonol";
+  src: url("JetBrainsMono-Light.ttf");
+}
+
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: none;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Gs";
+}
+.weathercard{
+  border: 3px solid black;
+}
+.card {
+  cursor: pointer;
+}
+.card{
+  border:black 3px solid;
+}
+.card h1{
+  background-color: rgba(255,255,255,1);
+  color: black;
+
+}
+.card:hover .cardname {
+  color: black;
+}
+
+.planner-time:hover .timings{
+background-color: rgb(46, 46, 46) ;
+color: white;
+}
+.secheading{
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.btnshadow{
+  box-shadow: 2px 2px 0px black;
+}
+.btnshadow:active{
+   box-shadow: 0px 0px 0px black;
+}
